@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import lab from "@/public/images/lab.png";
 
 function AboutBanner() {
   return (
@@ -10,22 +11,18 @@ function AboutBanner() {
             <div className="relative h-64 overflow-hidden rounded-lg sm:h-80  lg:h-full">
               <Image
                 alt=""
-                src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src={lab}
                 className="absolute inset-0 h-full w-full object-cover"
-                width={100}
-                height={100}
+                width={1000}
+                height={1000}
               />
             </div>
 
             <div className="lg:py-24">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Grow your audience
-              </h2>
-              <p className="mt-4 text-gray-600">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
-                qui hic atque tenetur quis eius quos ea neque sunt, accusantium
-                soluta minus veniam tempora deserunt? Molestiae eius quidem quam
-                repellat.
+              <h2 className="text-xs font-bold sm:text-xs">About Us</h2>
+              <p className="mt-4 text-gray-600 text-3xl tracking-wider">
+                Algorizmih health provides new technology that significantly
+                enhances the medical diagnosis in Nigeria.
               </p>
               <button>
                 <a
