@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import lab from "@/public/images/lab.png";
+import Button from "../ui/Button";
 
 function AboutBanner() {
   return (
@@ -30,19 +31,14 @@ function AboutBanner() {
                   />
                 </svg>
               </div>
-              <p className="mt-4 text-gray-600 text-4xl font-extralight tracking-wider">
+              <p className="mt-4 text-gray-600 md:text-2xl lg:text-4xl font-extralight tracking-wider">
                 Algorizmih health provides new technology that significantly
                 enhances the medical diagnosis in Nigeria.
               </p>
-              <button>
-                <a
-                  href="#"
-                  className="mt-8 inline-block rounded bg-blue-800 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-900 focus:outline-none focus:ring focus:ring-yellow-400"
-                >
-                  About Us
-                </a>
-              </button>
-              .
+              <Button
+                text="About Us"
+                className="mt-8 inline-block py-4 lg:px-12 px-6  text-white "
+              />
             </div>
           </div>
         </div>

@@ -30,10 +30,10 @@ const BlogList = () => {
   return (
     <>
       <div className="grid gap-y-5 px-10  ">
-        <h1 className="flex justify-center font-bold text-3xl py-4">
+        <div className="flex justify-center font-bold lg:text-3xl text-lg py-4 ">
           Algorizmih Collaborations
-        </h1>
-        <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-16">
+        </div>
+        <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:py-16 py-8">
           {blogPosts.map((post) => (
             <article key={post.id} className="group">
               <Image
@@ -52,7 +52,12 @@ const BlogList = () => {
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
                   {post.description}
                 </p>
-                <Button />
+                <div className="pt-10">
+                  <Button
+                    text="Read More"
+                    className="py-2 text-sm px-8 text-white w-full  "
+                  />
+                </div>
               </div>
             </article>
           ))}
