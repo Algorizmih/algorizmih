@@ -6,13 +6,13 @@ function AboutBanner() {
   return (
     <div>
       <section>
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 border-y border-black">
+        <div className="mx-auto max-w-screen-full px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 border-y border-black ">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
             <div className="relative h-64 overflow-hidden rounded-lg sm:h-80  lg:h-full">
               <Image
                 alt=""
                 src={signing}
-                className="absolute inset-0 h-full w-full object-cover"
+                className=" h-full w-full object-cover"
                 width={1000}
                 height={1000}
               />
@@ -35,7 +35,7 @@ function AboutBanner() {
                 <button>
                   <a
                     href="#"
-                    className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+                    className="mt-8 inline-block rounded bg-blue-800 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-900 focus:outline-none focus:ring focus:ring-blue-400"
                   >
                     Read More
                   </a>
@@ -43,7 +43,7 @@ function AboutBanner() {
                 <button>
                   <a
                     href="#"
-                    className="mt-8 inline-block rounded bg-white px-12 py-3 text-sm font-medium text-black transition hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-blue-700 border border-blue-700"
+                    className="mt-8 inline-block rounded bg-white px-12 py-3 text-sm font-medium text-black transition hover:text-white hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-700 border border-blue-700"
                   >
                     More Posts
                   </a>

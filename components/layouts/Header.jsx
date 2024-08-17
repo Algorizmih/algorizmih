@@ -29,13 +29,13 @@ const Header = () => {
   return (
     <nav className="bg-white py-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-10">
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="text-black text-xl font-bold">
               <Image alt="" width={150} height={100} src={logo} />
             </a>
           </div>
-          <div className="hidden md:flex items-center space-x-4 border border-gray-600 rounded-full px-5">
+          <div className="hidden md:flex items-center space-x-4 border border-gray-500 rounded-full px-4">
             {navItems.map((item) =>
               item.subMenu ? (
                 <div

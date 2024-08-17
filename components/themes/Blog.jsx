@@ -33,7 +33,7 @@ const BlogList = () => {
         <h1 className="flex justify-center font-bold text-3xl py-4">
           Algorizmih Collaborations
         </h1>
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-16">
           {blogPosts.map((post) => (
             <article key={post.id} className="group">
               <Image

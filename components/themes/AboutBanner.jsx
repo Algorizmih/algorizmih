@@ -6,28 +6,38 @@ function AboutBanner() {
   return (
     <div>
       <section>
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-            <div className="relative h-64 overflow-hidden rounded-lg sm:h-80  lg:h-full">
-              <Image
-                alt=""
-                src={lab}
-                className="absolute inset-0 h-full w-full object-cover"
-                width={1000}
-                height={1000}
-              />
+            <div className="relative h-64 overflow-hidden  sm:h-80  lg:h-full">
+              <Image alt="" src={lab} className="" width={500} height={500} />
             </div>
 
             <div className="lg:py-24">
-              <h2 className="text-xs font-bold sm:text-xs">About Us</h2>
-              <p className="mt-4 text-gray-600 text-3xl tracking-wider">
+              <div className="flex">
+                <h2 className="text-xs font-bold sm:text-xs">About Us</h2>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-3"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25"
+                  />
+                </svg>
+              </div>
+              <p className="mt-4 text-gray-600 text-4xl font-extralight tracking-wider">
                 Algorizmih health provides new technology that significantly
                 enhances the medical diagnosis in Nigeria.
               </p>
               <button>
                 <a
                   href="#"
-                  className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+                  className="mt-8 inline-block rounded bg-blue-800 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-900 focus:outline-none focus:ring focus:ring-yellow-400"
                 >
                   About Us
                 </a>
