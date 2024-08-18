@@ -4,33 +4,23 @@ function Banner() {
   return (
     <div>
       <section className="relative bg-[url(https://images.unsplash.com/photo-1685975734968-5e23db2a97be?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]  bg-cover bg-center bg-no-repeat">
-        <div className="absolute inset-0 bg-gray-900/75 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
-
-        <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
-          <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-            <h1 className="text-3xl font-extrabold text-white sm:text-5xl">
+        <div className="relative mx-auto max-w-screen-xl px-4 py-10 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+          <div className="">
+            <div className="px-36 text-center font-extralight text-white text-6xl">
               The Future of Patient Care with the Power of Artificial
               Intelligence
-            </h1>
-
-            <p className="mt-4 max-w-lg text-white sm:text-xl/relaxed"></p>
-
-            <div className="mt-8 flex flex-wrap gap-4 text-center">
-              <a
-                href="#"
-                className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
-              >
-                Get Started
-              </a>
-
-              <a
-                href="#"
-                className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
-              >
-                Learn More
-              </a>
             </div>
           </div>
+        </div>
+        <div className=" flex flex-wrap justify-between pb-20 px-3">
+          <button className="block w-full rounded-full bg-white px-20 py-3 text-xs font-medium text-black shadow focus:outline-none focus:ring  sm:w-auto">
+            Redefining healthcare <br />
+            with intelligent solutions
+          </button>
+
+          <button className="block w-full rounded-full bg-blue-800 px-10 py-5 text-sm font-medium text-white shadow hover:text-blue-900 focus:outline-none focus:ring active:text-blue-800 sm:w-auto">
+            Get Demo
+          </button>
         </div>
       </section>
     </div>
