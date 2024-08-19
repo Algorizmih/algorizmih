@@ -30,7 +30,7 @@ const BlogList = () => {
   return (
     <>
       <div className="grid gap-y-5 px-10  ">
-        <div className="flex justify-center font-bold lg:text-3xl text-lg py-4 ">
+        <div className="flex justify-center font-bold lg:text-3xl text-2xl py-4 ">
           Algorizmih Collaborations
         </div>
         <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:py-16 py-8">
