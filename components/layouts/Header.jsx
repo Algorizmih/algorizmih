@@ -1,7 +1,7 @@
-// components/Header.js
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { FaCaretDown } from "react-icons/fa";
 import logo from "@/public/images/logo.png";
 
 const Header = () => {
@@ -21,31 +21,51 @@ const Header = () => {
     { name: "Services", href: "#" },
     { name: "Medical Data Flow", href: "/medical" },
     { name: "AI Labs", href: "/labs" },
-    { name: "R&D", href: "/press" },
+    { name: "R&D", href: "/rnd" },
     { name: "Press", href: "/press" },
     { name: "Contact", href: "#" },
   ];
 
+  const handleDropdownClick = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (!event.target.closest(".dropdown")) {
+      setDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="bg-white py-5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-10">
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="text-black text-xl font-bold">
-              <Image alt="" width={150} height={100} src={logo} />
+              <Image alt="Logo" width={150} height={100} src={logo} />
             </a>
           </div>
-          <div className="hidden md:flex items-center space-x-4 border border-gray-500 rounded-full px-4">
+          <div className="hidden md:flex space-x-4 border border-gray-500 rounded-full px-4">
             {navItems.map((item) =>
               item.subMenu ? (
-                <div
-                  key={item.name}
-                  className="relative "
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  onMouseLeave={() => setDropdownOpen(false)}
-                >
-                  <button className="text-black  px-3 py-2  rounded-md text-sm font-medium">
+                <div key={item.name} className="relative dropdown">
+                  <button
+                    onClick={handleDropdownClick}
+                    className="flex items-center text-black px-3 py-2 rounded-md text-sm font-medium"
+                  >
                     {item.name}
+                    <FaCaretDown
+                      className={`ml-1 transition-transform duration-200 ${
+                        dropdownOpen ? "transform rotate-180" : ""
+                      }`}
+                    />
                   </button>
                   {dropdownOpen && (
                     <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-10">
@@ -53,7 +73,7 @@ const Header = () => {
                         <a
                           key={subItem.name}
                           href={subItem.href}
-                          className="block px-4  text-gray-800 hover:bg-gray-200"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                         >
                           {subItem.name}
                         </a>
@@ -65,7 +85,7 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-black px-3 py-2  rounded-md text-sm font-medium"
+                  className="text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {item.name}
                 </a>
@@ -76,7 +96,7 @@ const Header = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-none focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -139,7 +159,7 @@ const Header = () => {
                       <a
                         key={subItem.name}
                         href={subItem.href}
-                        className="block px-3 py-2 text-black  hover:bg-gray-300 rounded-md"
+                        className="block px-3 py-2 text-black hover:bg-gray-300 rounded-md"
                       >
                         {subItem.name}
                       </a>

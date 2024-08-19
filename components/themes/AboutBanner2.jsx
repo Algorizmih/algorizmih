@@ -8,18 +8,18 @@ function AboutBanner() {
     <div>
       <section>
         <div className="mx-auto max-w-screen-full px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 border-y border-black ">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-            <div className="relative h-64 overflow-hidden rounded-lg sm:h-80  lg:h-full">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 ">
+            <div className="relative  h-64 overflow-hidden rounded-lg sm:h-80  lg:h-full">
               <Image
                 alt=""
                 src={signing}
-                className=" h-full w-full object-cover"
+                className=" h-full w-full object-cover mt-10 rounded-lg "
                 width={1000}
                 height={1000}
               />
             </div>
 
-            <div className="lg:py-24">
+            <div className="">
               <div className="text-xl font-bold sm:text-xl">
                 Algorizmi Health and NICRAT Partner to Advance Cancer Research
                 with a Pioneering Imaging Data Repository

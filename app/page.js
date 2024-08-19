@@ -5,6 +5,7 @@ import AboutBanner2 from "@/components/themes/AboutBanner2";
 import Blog from "@/components/themes/Blog";
 import Form from "@/components/forms/Form";
 import Footer from "@/components/layouts/Footer";
+import Team from "@/components/themes/Team";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <AboutBanner />
         <AboutBanner2 />
         <Blog />
+        <Team />
         <Form />
         <Footer />
       </div>

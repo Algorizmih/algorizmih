@@ -15,14 +15,13 @@ function AboutBanner() {
 
             <div className="lg:py-24">
               <div className="flex">
-                <h2 className="text-xs font-bold sm:text-xs">About Us</h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-3"
+                  className="w-3 text-gray-600"
                 >
                   <path
                     strokeLinecap="round"
@@ -30,6 +29,7 @@ function AboutBanner() {
                     d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25"
                   />
                 </svg>
+                <h2 className="text-xs font-bold sm:text-xs">About Us</h2>
               </div>
               <p className="mt-4 text-gray-600 md:text-2xl lg:text-4xl font-extralight tracking-wider">
                 Algorizmih health provides new technology that significantly
