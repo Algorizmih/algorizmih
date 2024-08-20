@@ -8,21 +8,21 @@ const blogPosts = [
     title:
       "International consensus guideline for trustworthy and deplorable artificial intelligence in healthcare",
     description: "AIgorizmih Blog",
-    imageUrl: "/images/blog.jpeg",
+    imageUrl: "/images/blog/blog-1.png",
   },
   {
     id: 2,
     title:
       "From MICCAI To AFRICAI: African network for artificial artificial intelligence in biomedical imaging",
     description: "AIgorizmih Blog.",
-    imageUrl: "/images/blog2.png",
+    imageUrl: "/images/blog/blog-2.png",
   },
   {
     id: 3,
     title:
       "Algorizmih collaborated with young Gombe indigenes who produced Ventilator.",
     description: "Health.",
-    imageUrl: "/images/blog3.png",
+    imageUrl: "/images/blog/blog-3.jpeg",
   },
 ];
 
@@ -30,7 +30,7 @@ const BlogList = () => {
   return (
     <>
       <div className="grid gap-y-5 px-10  ">
-        <div className="flex justify-center font-bold lg:text-3xl text-2xl pt-5 ">
+        <div className="flex justify-center font-semibold lg:text-3xl text-2xl pt-5 ">
           Algorizmih Collaborations
         </div>
         <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4">

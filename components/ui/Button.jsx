@@ -22,7 +22,7 @@ import React from "react";
 const Button = ({ text, onClick, className = "" }) => {
   return (
     <button
-      className={`bg-blue-800 hover:bg-blue-900  font-medium  transition rounded focus:outline-none focus:none  ${className}`}
+      className={`bg-[#1C32FF] hover:bg-blue-900  font-medium  transition rounded focus:outline-none focus:none  ${className}`}
       onClick={onClick}
     >
       {text}

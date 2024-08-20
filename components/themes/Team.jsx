@@ -44,7 +44,7 @@ const Team = () => {
   return (
     <>
       <div className=" mx-auto mt-16  py-12 px-4 sm:px-6 lg:px-8 border-t border-black ">
-        <h2 className="text-4xl font-extrabold text-gray-900 text-center">
+        <h2 className="text-4xl font-semibold text-gray-900 text-center">
           Meet the Team
         </h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 px-20">
@@ -56,7 +56,7 @@ const Team = () => {
               <Image
                 src={staff.image}
                 alt={`${staff.name} photo`}
-                className="w-full h-74  border-b-4 border-black  "
+                className="w-full border-b-4 border-black  "
                 width={1000}
                 height={1000}
               />
@@ -64,7 +64,7 @@ const Team = () => {
                 <h3 className="text-2xl font-bold text-gray-900 uppercase ">
                   {staff.name}
                 </h3>
-                <p className="mt-2 text-gray-900 font-bold">{staff.title}</p>
+                <p className="mt-2 text-black">{staff.title}</p>
               </div>
             </div>
           ))}
