@@ -1,77 +1,38 @@
-import Image from "next/image";
-import React from "react";
+import SkeletonImage from "@/components/ui/SkeletonImage";
+import Reveal from "@/components/ui/Reveal";
+import { team } from "@/lib/content";
 
-const staffMembers = [
-  {
-    id: 1,
-    name: "Dr. Yunusa M. Garba",
-    title: "CEO",
-    image: "/images/team/ceo.jpeg",
-  },
-  {
-    id: 2,
-    name: "Dr.Abdurrahman chikaire",
-    title: "COO",
-    image: "/images/team/coo.jpeg",
-  },
-  {
-    id: 3,
-    name: "Mr. Faruk Abubakar Daudu",
-    title: "Director, Media and Publicity",
-    image: "/images/team/dmp.png",
-  },
-  {
-    id: 4,
-    name: "Abubakar Saidu Umar",
-    title: "Project/Marketing Manager",
-    image: "/images/team/pmm.jpeg",
-  },
-  {
-    id: 5,
-    name: "Ahmad Habib",
-    title: "Data Scientist",
-    image: "/images/team/ds.png",
-  },
-  {
-    id: 6,
-    name: "Ismail Dalhatu",
-    title: "Full Stack Developer",
-    image: "/images/team/fsd.jpeg",
-  },
-];
-
-const Team = () => {
+export default function Team() {
   return (
-    <>
-      <div className=" mx-auto mt-16  py-12 px-4 sm:px-6 lg:px-8 border-t border-black ">
-        <h2 className="text-4xl font-semibold text-gray-900 text-center">
-          Meet the Team
-        </h2>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 px-20">
-          {staffMembers.map((staff) => (
-            <div
-              key={staff.id}
-              className="bg-white shadow-md  rounded-lg overflow-hidden border-4 border-black"
-            >
-              <Image
-                src={staff.image}
-                alt={`${staff.name} photo`}
-                className="w-full border-b-4 border-black  "
-                width={1000}
-                height={1000}
-              />
-              <div className="p-2 text-center">
-                <h3 className="text-2xl font-bold text-gray-900 uppercase ">
-                  {staff.name}
-                </h3>
-                <p className="mt-2 text-black">{staff.title}</p>
-              </div>
-            </div>
+    <section id="team" className="bg-ice">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-20 lg:px-8 lg:py-24">
+        <Reveal>
+          <h2 className="text-center font-heading text-[1.75rem] font-semibold leading-tight tracking-tight text-space sm:text-4xl">
+            Meet the Team
+          </h2>
+        </Reveal>
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {team.map((staff, index) => (
+            <li key={staff.id} className="card-lift group overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+              <Reveal delay={index * 0.06}>
+                <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+                  <SkeletonImage
+                    src={staff.image}
+                    alt={`${staff.name}, ${staff.title}`}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                    className="object-cover object-top group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-5 text-center">
+                  <h3 className="font-heading text-xl font-semibold text-space">{staff.name}</h3>
+                  <p className="mt-1 text-sm text-muted">{staff.title}</p>
+                </div>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </>
+    </section>
   );
-};
-
-export default Team;
+}

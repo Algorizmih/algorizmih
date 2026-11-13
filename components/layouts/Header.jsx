@@ -1,186 +1,197 @@
 "use client";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { FaCaretDown } from "react-icons/fa";
-import logo from "@/public/images/logo.png";
 
-const Header = () => {
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { hero, navItems } from "@/lib/content";
+
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const navItems = [
-    {
-      name: "About Us",
-      href: "#",
-      subMenu: [
-        { name: "Our Team", href: "#" },
-        { name: "Our History", href: "#" },
-        { name: "Careers", href: "#" },
-      ],
-    },
-    { name: "Services", href: "#" },
-    { name: "Medical Data Flow", href: "/medical" },
-    { name: "AI Labs", href: "/labs" },
-    { name: "R&D", href: "/rnd" },
-    { name: "Press", href: "/press" },
-    { name: "Contact", href: "#" },
-  ];
-
-  const handleDropdownClick = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleClickOutside = (event) => {
-    if (!event.target.closest(".dropdown")) {
-      setDropdownOpen(false);
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (event.target.closest(".dropdown") || event.target.closest("#mobile-menu") || event.target.closest("[data-menu-button]")) {
+        return;
+      }
+      setDropdownOpen(false);
+    };
+    const handleKey = (event) => {
+      if (event.key === "Escape") {
+        setDropdownOpen(false);
+        setIsOpen(false);
+      }
+    };
+    const handleResize = () => {
+      if (window.matchMedia("(min-width: 1280px)").matches) {
+        setIsOpen(false);
+        setDropdownOpen(false);
+      }
+    };
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKey);
+    window.addEventListener("resize", handleResize);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKey);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  return (
-    <nav className="bg-white py-5">
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-10">
-          <div className="flex-shrink-0 flex items-center">
-            <a href="/" className="text-black text-xl font-bold">
-              <Image alt="Logo" width={150} height={100} src={logo} />
-            </a>
-          </div>
-          <div className="hidden md:flex space-x-4 border border-gray-500 rounded-full px-4">
-            {navItems.map((item) =>
-              item.subMenu ? (
-                <div key={item.name} className="relative dropdown">
-                  <button
-                    onClick={handleDropdownClick}
-                    className="flex items-center text-black px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {item.name}
-                    <FaCaretDown
-                      className={`ml-1 transition-transform duration-200 ${
-                        dropdownOpen ? "transform rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {dropdownOpen && (
-                    <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-10">
-                      {item.subMenu.map((subItem) => (
-                        <a
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                        >
-                          {subItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-black px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {item.name}
-                </a>
-              )
-            )}
-          </div>
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
-      <div
-        className={`${isOpen ? "block" : "hidden"} md:hidden`}
-        id="mobile-menu"
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+  const closeMenus = () => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+  };
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-[4.5rem] sm:px-5 lg:px-8">
+        <Link href="/" className="inline-flex min-w-0 items-center" onClick={closeMenus}>
+          <Image
+            src="/images/logo.png"
+            alt="Algorizmi Health"
+            width={1972}
+            height={506}
+            priority
+            className="h-auto max-h-9 w-auto max-w-[56vw] object-contain sm:max-h-11 sm:max-w-none"
+          />
+        </Link>
+
+        <nav aria-label="Primary" className="hidden items-center gap-1 xl:flex">
           {navItems.map((item) =>
             item.subMenu ? (
-              <div key={item.name} className="relative">
+              <div key={item.name} className="relative dropdown">
                 <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="text-black hover:bg-gray-300 block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                  type="button"
+                  aria-expanded={dropdownOpen}
+                  aria-controls="about-menu"
+                  onClick={() => setDropdownOpen((open) => !open)}
+                  className="inline-flex items-center rounded-full px-3 py-2 text-sm font-medium text-space transition duration-200 hover:bg-ice"
                 >
                   {item.name}
+                  <ChevronDown
+                    aria-hidden="true"
+                    size={16}
+                    className={`ml-1 transition ${dropdownOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
-                {dropdownOpen && (
-                  <div className="bg-gray-800">
+                {dropdownOpen ? (
+                  <ul
+                    id="about-menu"
+                    className="absolute left-0 top-full z-20 mt-2 w-52 rounded-2xl border border-line bg-white p-2 shadow-card"
+                  >
+                    <li>
+                      <Link href={item.href} onClick={closeMenus} className="block rounded-xl px-3 py-2 text-sm text-space transition duration-200 hover:bg-ice">
+                        {item.name}
+                      </Link>
+                    </li>
                     {item.subMenu.map((subItem) => (
-                      <a
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-3 py-2 text-black hover:bg-gray-300 rounded-md"
-                      >
-                        {subItem.name}
-                      </a>
+                      <li key={subItem.name}>
+                        <Link
+                          href={subItem.href}
+                          onClick={closeMenus}
+                          className="block rounded-xl px-3 py-2 text-sm text-space transition duration-200 hover:bg-ice"
+                        >
+                          {subItem.name}
+                        </Link>
+                      </li>
                     ))}
-                  </div>
-                )}
+                  </ul>
+                ) : null}
               </div>
             ) : (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
-                className="text-black hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"
+                className="rounded-full px-3 py-2 text-sm font-medium text-space transition duration-200 hover:bg-ice"
               >
                 {item.name}
-              </a>
+              </Link>
             )
           )}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <Link
+            href="/#contact"
+            className="hidden rounded-full bg-navy px-4 py-2.5 text-sm font-medium text-white sm:inline-flex"
+          >
+            {hero.demoCta}
+          </Link>
+          <button
+            type="button"
+            data-menu-button
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-space xl:hidden"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setIsOpen((open) => !open)}
+          >
+            <span className="sr-only">{isOpen ? "Close menu" : "Open main menu"}</span>
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
       </div>
-    </nav>
-  );
-};
 
-export default Header;
+      {isOpen ? (
+        <nav id="mobile-menu" aria-label="Mobile" className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-line bg-white xl:hidden">
+          <ul className="mx-auto max-w-7xl space-y-1 px-4 py-3 sm:px-5">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                {item.subMenu ? (
+                  <div>
+                    <button
+                      type="button"
+                      className="flex min-h-11 w-full items-center justify-between rounded-xl px-3 py-3 text-left text-base font-medium text-space transition duration-200 hover:bg-ice"
+                      aria-expanded={dropdownOpen}
+                      onClick={() => setDropdownOpen((open) => !open)}
+                    >
+                      {item.name}
+                      <ChevronDown size={16} className={dropdownOpen ? "rotate-180" : ""} />
+                    </button>
+                    {dropdownOpen ? (
+                      <ul className="pb-2 pl-3">
+                        <li>
+                          <Link href={item.href} onClick={closeMenus} className="block rounded-xl px-3 py-2 text-sm text-body transition duration-200 hover:bg-ice">
+                            {item.name}
+                          </Link>
+                        </li>
+                        {item.subMenu.map((subItem) => (
+                          <li key={subItem.name}>
+                            <Link href={subItem.href} onClick={closeMenus} className="block rounded-xl px-3 py-2 text-sm text-body transition duration-200 hover:bg-ice">
+                              {subItem.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={closeMenus}
+                    className="block min-h-11 rounded-xl px-3 py-3 text-base font-medium text-space transition duration-200 hover:bg-ice"
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+            <li className="pt-2 sm:hidden">
+              <Link href="/#contact" onClick={closeMenus} className="inline-flex rounded-full bg-navy px-4 py-2 text-sm font-medium text-white">
+                {hero.demoCta}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      ) : null}
+    </header>
+  );
+}

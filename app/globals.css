@@ -1,5 +1,262 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  background: #ffffff;
+  color: #334155;
+  text-rendering: optimizeLegibility;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+::selection {
+  background: #d7f4f8;
+  color: #071827;
+}
+
+:focus-visible {
+  outline: 2px solid #00b8d9;
+  outline-offset: 3px;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.flow-line {
+  stroke-dasharray: 5 9;
+  animation: flow 14s linear infinite;
+}
+
+.packet {
+  offset-rotate: 0deg;
+  animation: packet 5.5s linear infinite;
+}
+
+.packet-1 {
+  offset-path: path("M168 230 C 230 220, 250 150, 312 148");
+}
+
+.packet-2 {
+  offset-path: path("M168 250 C 240 250, 260 236, 338 236");
+  animation-delay: -1.8s;
+}
+
+.packet-3 {
+  offset-path: path("M160 300 C 230 330, 270 324, 356 324");
+  animation-delay: -3.4s;
+}
+
+.node-ring,
+.focus-ring,
+.vital-ring,
+.heart-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.node-ring {
+  animation: node-ping 3.2s ease-out infinite;
+}
+
+.focus-ring {
+  animation: node-ping 3.2s ease-out infinite;
+  animation-delay: 0.9s;
+}
+
+.vital-ring {
+  animation: vital 1.7s ease-in-out infinite;
+}
+
+.heart-dot {
+  animation: vital 1.7s ease-in-out infinite;
+}
+
+.ecg-line {
+  stroke-dasharray: 70 460;
+  animation: ecg 2.6s linear infinite;
+}
+
+.scan-band {
+  animation: scan 7.5s ease-in-out infinite;
+}
+
+.hero-grid {
+  background-image: radial-gradient(circle, rgba(0, 184, 217, 0.28) 1px, transparent 1.4px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse at 72% 42%, black 10%, transparent 68%);
+  animation: grid-drift 28s linear infinite;
+}
+
+.health-link {
+  animation: link-glow 2.2s ease-in-out infinite;
+}
+
+.skeleton {
+  background: linear-gradient(100deg, #e7f1f5 18%, #ffffff 42%, #e7f1f5 68%);
+  background-size: 220% 100%;
+  animation: shimmer 1.35s ease-in-out infinite;
+}
+
+.card-lift {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+}
+
+.animate-page-in {
+  animation: page-in 0.45s ease-out both;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -280;
+  }
+}
+
+@keyframes packet {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes node-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  75% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes vital {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  18% {
+    transform: scale(1.08);
+  }
+  32% {
+    transform: scale(1);
+  }
+  48% {
+    transform: scale(1.05);
+  }
+  64% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ecg {
+  0% {
+    stroke-dashoffset: 40;
+  }
+  28% {
+    stroke-dashoffset: -180;
+  }
+  46% {
+    stroke-dashoffset: -230;
+  }
+  100% {
+    stroke-dashoffset: -530;
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(460px);
+    opacity: 0;
+  }
+}
+
+@keyframes grid-drift {
+  to {
+    background-position: 26px 26px;
+  }
+}
+
+@keyframes link-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .flow-line,
+  .skeleton,
+  .animate-page-in,
+  .packet,
+  .node-ring,
+  .focus-ring,
+  .vital-ring,
+  .heart-dot,
+  .ecg-line,
+  .scan-band,
+  .hero-grid,
+  .health-link {
+    animation: none;
+  }
+
+  .card-lift,
+  .card-lift:hover {
+    transition: none;
+    transform: none;
+  }
+}

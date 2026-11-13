@@ -1,25 +1,31 @@
-import Header from "@/components/layouts/Header";
-import Banner from "@/components/themes/Banner";
-import AboutBanner from "@/components/themes/AboutBanner";
-import AboutBanner2 from "@/components/themes/AboutBanner2";
-import Blog from "@/components/themes/Blog";
+import AIHeroSection from "@/components/sections/AIHeroSection";
+import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
+import CTASection from "@/components/sections/CTASection";
+import PartnershipStory from "@/components/sections/PartnershipStory";
+import PatientExperienceSection from "@/components/sections/PatientExperienceSection";
+import ProfessionalFeatureSection from "@/components/sections/ProfessionalFeatureSection";
+import ResearchSection from "@/components/sections/ResearchSection";
+import TransformationSection from "@/components/sections/TransformationSection";
+import TrustSecuritySection from "@/components/sections/TrustSecuritySection";
+import WorkflowVisualization from "@/components/sections/WorkflowVisualization";
 import Form from "@/components/forms/Form";
-import Footer from "@/components/layouts/Footer";
 import Team from "@/components/themes/Team";
 
 export default function Home() {
   return (
     <>
-      <div>
-        <Header />
-        <Banner />
-        <AboutBanner />
-        <AboutBanner2 />
-        <Blog />
-        <Team />
-        <Form />
-        <Footer />
-      </div>
+      <AIHeroSection />
+      <TransformationSection />
+      <PartnershipStory id="partnership" />
+      <CapabilitiesSection />
+      <WorkflowVisualization />
+      <PatientExperienceSection />
+      <ProfessionalFeatureSection />
+      <TrustSecuritySection />
+      <ResearchSection />
+      <Team />
+      <CTASection />
+      <Form />
     </>
   );
 }
