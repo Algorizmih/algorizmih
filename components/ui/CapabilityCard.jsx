@@ -25,7 +25,7 @@ export default function CapabilityCard({ title, status, text, href, icon }) {
       <p className="mt-3 flex-1 text-sm leading-relaxed text-body sm:text-[15px]">{text}</p>
       <Link
         href={href}
-        className="mt-6 inline-flex text-sm font-medium text-navy underline decoration-cyan decoration-2 underline-offset-4"
+        className="mt-6 inline-flex text-sm font-medium text-navy underline decoration-cyanInk decoration-2 underline-offset-4 outline-none focus-visible:shadow-focus"
       >
         View source note
       </Link>

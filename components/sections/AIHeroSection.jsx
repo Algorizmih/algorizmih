@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
+import AmbientField from "@/components/ui/AmbientField";
 import AIVisualization from "@/components/visuals/AIVisualization";
 import { hero, socials } from "@/lib/content";
 
@@ -11,7 +12,7 @@ export default function AIHeroSection() {
         className="pointer-events-none absolute inset-0 bg-gradient-to-br from-space via-space to-navy"
         aria-hidden="true"
       />
-      <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+      <AmbientField />
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-5 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-24">
         <Reveal>
           <div>

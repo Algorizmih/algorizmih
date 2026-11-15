@@ -8,19 +8,6 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
 }
 
-export function BackToTopButton({ className = "" }) {
-  return (
-    <button
-      type="button"
-      onClick={scrollToTop}
-      aria-label="Back to top"
-      className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-navy ${className}`}
-    >
-      <ArrowUp aria-hidden="true" size={18} />
-    </button>
-  );
-}
-
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 

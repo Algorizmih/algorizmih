@@ -11,22 +11,22 @@ export default function Team() {
             Meet the Team
           </h2>
         </Reveal>
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-3 lg:gap-6">
           {team.map((staff, index) => (
-            <li key={staff.id} className="card-lift group overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+            <li key={staff.id} className="card-lift group min-w-0 overflow-hidden rounded-2xl border border-line bg-white shadow-card sm:rounded-3xl">
               <Reveal delay={index * 0.06}>
                 <div className="relative aspect-[3/4] sm:aspect-[4/5]">
                   <SkeletonImage
                     src={staff.image}
                     alt={`${staff.name}, ${staff.title}`}
                     fill
-                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                    sizes="(min-width: 1024px) 30vw, 50vw"
                     className="object-cover object-top group-hover:scale-105"
                   />
                 </div>
-                <div className="p-5 text-center">
-                  <h3 className="font-heading text-xl font-semibold text-space">{staff.name}</h3>
-                  <p className="mt-1 text-sm text-muted">{staff.title}</p>
+                <div className="px-1.5 py-2 text-center sm:p-5">
+                  <h3 className="font-heading text-xs font-semibold leading-tight text-space sm:text-xl">{staff.name}</h3>
+                  <p className="mt-1 text-[11px] leading-snug text-muted sm:text-sm">{staff.title}</p>
                 </div>
               </Reveal>
             </li>

@@ -6,7 +6,7 @@ import { trustPoints } from "@/lib/content";
 export default function TrustSecuritySection() {
   return (
     <section id="trust" className="bg-space text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-20 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-content px-gutter py-section sm:px-gutter-sm sm:py-section-sm lg:px-gutter-lg lg:py-section-lg">
         <Reveal>
           <SectionIntro
             invert

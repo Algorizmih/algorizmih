@@ -5,7 +5,7 @@ import SectionIntro from "@/components/ui/SectionIntro";
 export default function PatientExperienceSection() {
   return (
     <section id="patients" className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-20 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-content px-gutter py-section sm:px-gutter-sm sm:py-section-sm lg:px-gutter-lg lg:py-section-lg">
         <SectionIntro
           eyebrow="For patients"
           title="How a patient moves through the platform."

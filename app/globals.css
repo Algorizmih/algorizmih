@@ -103,6 +103,39 @@ body {
   animation: link-glow 2.2s ease-in-out infinite;
 }
 
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 184, 217, 0.28) 1px, transparent 1.4px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, black 18%, transparent 74%);
+  animation: grid-drift 28s linear infinite;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  animation: orb-float 16s ease-in-out infinite alternate;
+}
+
+.ambient-orb-a {
+  width: 18rem;
+  height: 18rem;
+  left: -5rem;
+  top: -6rem;
+  background: rgba(0, 184, 217, 0.2);
+}
+
+.ambient-orb-b {
+  width: 16rem;
+  height: 16rem;
+  right: -4rem;
+  bottom: -6rem;
+  background: rgba(0, 214, 180, 0.16);
+  animation-delay: -7s;
+}
+
 .skeleton {
   background: linear-gradient(100deg, #e7f1f5 18%, #ffffff 42%, #e7f1f5 68%);
   background-size: 220% 100%;
@@ -207,6 +240,15 @@ body {
   }
 }
 
+@keyframes orb-float {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(8%, 12%, 0) scale(1.12);
+  }
+}
+
 @keyframes link-glow {
   0%,
   100% {
@@ -250,7 +292,9 @@ body {
   .ecg-line,
   .scan-band,
   .hero-grid,
-  .health-link {
+  .health-link,
+  .ambient-grid,
+  .ambient-orb {
     animation: none;
   }
 

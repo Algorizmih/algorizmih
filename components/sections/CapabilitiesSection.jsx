@@ -5,8 +5,8 @@ import { capabilities } from "@/lib/content";
 
 export default function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="border-t border-line bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-20 lg:px-8 lg:py-24">
+    <section id="capabilities" className="bg-ice">
+      <div className="mx-auto max-w-content px-gutter py-section sm:px-gutter-sm sm:py-section-sm lg:px-gutter-lg lg:py-section-lg">
         <Reveal>
           <SectionIntro
             eyebrow="Services"

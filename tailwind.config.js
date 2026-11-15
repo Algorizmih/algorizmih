@@ -11,6 +11,7 @@ module.exports = {
         space: "#071827",
         navy: "#102D42",
         cyan: "#00B8D9",
+        cyanInk: "#087A94",
         mint: "#00D6B4",
         ice: "#EAF5F8",
         body: "#334155",
@@ -25,8 +26,20 @@ module.exports = {
         heading: ["var(--font-manrope)", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["var(--font-plex)", "ui-monospace", "monospace"],
       },
+      spacing: {
+        gutter: "1rem",
+        "gutter-sm": "1.25rem",
+        "gutter-lg": "2rem",
+        section: "3.5rem",
+        "section-sm": "5rem",
+        "section-lg": "6rem",
+      },
+      maxWidth: {
+        content: "80rem",
+      },
       boxShadow: {
         card: "0 18px 40px -28px rgba(7, 24, 39, 0.45)",
+        focus: "0 0 0 3px rgba(8, 122, 148, 0.45)",
       },
     },
   },

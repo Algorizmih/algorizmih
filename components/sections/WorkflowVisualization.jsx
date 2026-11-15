@@ -1,11 +1,13 @@
+import AmbientField from "@/components/ui/AmbientField";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
 import { workflowSteps } from "@/lib/content";
 
 export default function WorkflowVisualization() {
   return (
-    <section id="workflow" className="bg-navy text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-20 lg:px-8 lg:py-24">
+    <section id="workflow" className="relative overflow-hidden bg-navy text-white">
+      <AmbientField />
+      <div className="relative z-10 mx-auto max-w-content px-gutter py-section sm:px-gutter-sm sm:py-section-sm lg:px-gutter-lg lg:py-section-lg">
         <SectionIntro
           invert
           eyebrow="How it works"
@@ -22,7 +24,7 @@ export default function WorkflowVisualization() {
                 />
               ) : null}
               <Reveal delay={index * 0.08} className="flex min-w-0 flex-1 gap-4 lg:block">
-                <span className="relative z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan/50 bg-navy font-mono text-xs text-cyan transition duration-300 lg:mb-6">
+                <span className="relative z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan/50 bg-navy font-mono text-xs text-cyan transition duration-150 lg:mb-6">
                   0{index + 1}
                 </span>
                 <div className="card-lift min-w-0 flex-1 rounded-3xl border border-white/10 bg-white/5 p-5">

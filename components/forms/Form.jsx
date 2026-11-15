@@ -53,8 +53,12 @@ export default function Form() {
   };
 
   return (
-    <section id="contact" className="border-t border-line bg-white">
-      <div className="mx-auto grid max-w-7xl items-start gap-10 px-4 py-14 sm:px-5 sm:py-20 lg:grid-cols-2 lg:px-8">
+    <section id="contact" className="relative overflow-hidden border-t border-line bg-ice">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,184,217,0.14),transparent_52%)]"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto grid max-w-content items-start gap-10 px-gutter py-section sm:px-gutter-sm sm:py-section-sm lg:grid-cols-2 lg:px-gutter-lg">
         <div className="lg:pt-1">
           <Image src="/images/logo.png" alt="Algorizmi Health" width={1972} height={506} className="h-12 w-auto" />
           <h2 className="mt-6 font-heading text-[1.75rem] font-semibold tracking-tight text-space sm:text-4xl">
@@ -62,15 +66,16 @@ export default function Form() {
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-body">
             The form checks your details in this browser. It does not send them to a server. You can also email{" "}
-            <a className="underline decoration-cyan underline-offset-4" href={company.emailHref}>
+            <a className="underline decoration-cyanInk underline-offset-4 outline-none focus-visible:shadow-focus" href={company.emailHref}>
               {company.email}
             </a>{" "}
             or call {company.phone}.
           </p>
         </div>
 
+        <div className="rounded-3xl border border-line bg-white p-5 shadow-card sm:p-8">
         {status === "success" ? (
-          <div className="rounded-3xl border border-line bg-ice p-8" role="status">
+          <div role="status">
             <p className="font-mono text-xs uppercase tracking-[0.16em] text-success">Ready</p>
             <h3 className="mt-3 font-heading text-3xl font-semibold text-space">
               Thank you, {values.firstName}.
@@ -135,7 +140,7 @@ export default function Form() {
                   id="code"
                   value={values.code}
                   onChange={(event) => update("code", event.target.value)}
-                  className="rounded-l-xl border border-line bg-white px-3 py-3 text-sm text-space transition duration-200 focus:border-cyan"
+                  className={`${controlClass} min-h-12 rounded-l-xl px-3 py-3 text-sm ${errors.phone ? "border-danger" : ""}`}
                 >
                   <option value="+234">+234</option>
                   <option value="+1">+1</option>
@@ -149,7 +154,7 @@ export default function Form() {
                   placeholder="Phone Number"
                   aria-invalid={Boolean(errors.phone)}
                   aria-describedby={errors.phone ? "phone-error" : undefined}
-                  className="min-h-12 w-full rounded-r-xl border border-l-0 border-line px-3 py-3 text-base text-space transition duration-200 focus:border-cyan"
+                  className={`${controlClass} min-h-12 w-full rounded-r-xl border-l-0 px-3 py-3 ${errors.phone ? "border-danger" : ""}`}
                 />
               </div>
               {errors.phone ? (
@@ -170,7 +175,7 @@ export default function Form() {
                 placeholder="Your message"
                 aria-invalid={Boolean(errors.message)}
                 aria-describedby={errors.message ? "message-error" : undefined}
-                className="mt-2 min-h-32 w-full rounded-xl border border-line px-3 py-3 text-base text-space transition duration-200 focus:border-cyan"
+                className={`${controlClass} mt-2 min-h-32 w-full rounded-xl px-3 py-3 ${errors.message ? "border-danger" : ""}`}
               />
               {errors.message ? (
                 <p id="message-error" className="mt-2 text-sm text-danger">
@@ -178,7 +183,7 @@ export default function Form() {
                 </p>
               ) : null}
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-4 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <label htmlFor="terms" className="flex items-start gap-2 text-sm text-body">
                   <input
@@ -186,11 +191,11 @@ export default function Form() {
                     type="checkbox"
                     checked={values.terms}
                     onChange={(event) => update("terms", event.target.checked)}
-                    className="mt-1"
+                    className="mt-1 h-4 w-4 accent-cyanInk outline-none focus-visible:shadow-focus"
                   />
                   <span>
                     I agree with{" "}
-                    <a href="/#trust" className="underline decoration-cyan underline-offset-4">
+                    <a href="/#trust" className="underline decoration-cyanInk underline-offset-4 outline-none focus-visible:shadow-focus">
                       Terms of Use and Privacy Policy
                     </a>
                   </span>
@@ -201,10 +206,14 @@ export default function Form() {
             </div>
           </form>
         )}
+        </div>
       </div>
     </section>
   );
 }
+
+const controlClass =
+  "border border-line bg-ice text-base text-space outline-none transition duration-150 placeholder:text-muted focus:border-cyanInk focus:bg-white focus-visible:shadow-focus";
 
 function Field({ id, label, value, onChange, error, placeholder, type = "text" }) {
   return (
@@ -220,7 +229,7 @@ function Field({ id, label, value, onChange, error, placeholder, type = "text" }
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="mt-2 min-h-12 w-full rounded-xl border border-line px-3 py-3 text-base text-space transition duration-200 focus:border-cyan"
+        className={`${controlClass} mt-2 min-h-12 w-full rounded-xl px-3 py-3 ${error ? "border-danger" : ""}`}
       />
       {error ? (
         <p id={`${id}-error`} className="mt-2 text-sm text-danger">
